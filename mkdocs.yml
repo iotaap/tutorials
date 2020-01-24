@@ -1,0 +1,50 @@
+# Project information
+site_name: 'IoTaaP Tutorials'
+site_description: 'IoTaaP Tutorials'
+nav:
+  - Home: index.md
+  - PWM: pwm.md
+        
+# Copyright
+copyright: 'Copyright &copy; 2020 MVT Solutions'
+
+theme: 
+    name: material
+    palette:
+        primary: 'green'
+        accent: 'green-light'
+#    font:
+#        text: 'Ubuntu'
+#        code: 'Ubuntu Mono'
+    logo: 'images/logo.png'
+    favicon: 'images/favicon.png'
+markdown_extensions:
+  - codehilite
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/mvtsolutions'
+    - type: 'twitter'
+      link: 'https://twitter.com/mvt__solutions'
+    - type: 'facebook'
+      link: 'https://www.facebook.com/mvtsolutionscompany'
+
+plugins:
+    - mkpdfs
