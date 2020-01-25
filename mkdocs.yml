@@ -48,5 +48,3 @@ extra:
       link: 'https://www.facebook.com/iotaap'
     - type: 'youtube'
       link: 'https://www.youtube.com/channel/UCC9hU3ndh6bh-LbW3YjI98g'
-plugins:
-    - mkpdfs
