@@ -33,8 +33,8 @@ copyright: 'Copyright IoTaaP'
 theme: 
     name: material
     palette:
-        primary: 'green'
-        accent: 'green-light'
+        primary: 'light-blue'
+        accent: 'deep-purple'
 #    font:
 #        text: 'Ubuntu'
 #        code: 'Ubuntu Mono'
