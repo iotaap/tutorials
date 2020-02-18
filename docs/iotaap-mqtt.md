@@ -1,6 +1,6 @@
 # IoTaaP - MQTT
 
-In the previous instructions you read about MQTT, CloudMQTT and Mosquitto. If you are not familiar with this, go and check our instructions about [setting up CloudMQTT instance and testing it](https://www.iotaap.io/instructions/cloudmqtt-setup/).
+In the previous instructions you read about MQTT. If you are not familiar with this, go and check our instructions about setting up IoTaaP MQTT instance and testing it.
 
 In this instructions you will learn how to connect to MQTT broker using IoTaaP and we will create a simple program that will publish accelerometer coordinates and listen for LED status commands.
 
@@ -16,12 +16,12 @@ In _**setup()**_ function we wil configure WiFi and connect IoTaaP to WiFi AP (w
 ```cpp
 iotaap.wifi.connect("<your-ssid>","<your-password>");
 ```
-Now it’s time to initialize MQTT object and connect IoTaaP to our CloudMQTT instance.
+Now it’s time to initialize MQTT object and connect IoTaaP to our IoTaaP MQTT instance.
 
 ```cpp
-iotaap.mqtt.connect("iotaap_client", "farmer.cloudmqtt.com", 00000, callback, false, "USERNAME", "PASSWORD");
+iotaap.mqtt.connect("iotaap_client", "mqtt.iotaap.io", 8883, callback, false, "USERNAME", "PASSWORD");
 ```
-This line of code will connect IoTaaP to the CloudMQTT Mosquitto broker. You can get connection credentials in your instance details on CloudMQTT.
+This line of code will connect IoTaaP to the IoTaaP MQTT broker. You can get connection credentials in your instance details in IoTaaP Console.
 
 **callback()** is the function that will be called every time when something arrives to our subscribed topic(s). We will define this function later.
 
@@ -91,7 +91,7 @@ This code will keep our MQTT connection active, but it will also read accelerome
 
 ## Testing
 
-We will use MQTT.fx for testing. MQTT.fx installation process and usage are described [here](https://www.iotaap.io/instructions/cloudmqtt-setup/#1568209144227-ca19357a-d1f5). Simply connect to your CloudMQTT instance and publish on or off to “ledstatus/led1” topic. Be sure to subscribe to the “iotaap/accelerometer” topic and you will se accelerometer coordinates in jSON format
+We will use MQTT.fx for testing. MQTT.fx installation process and usage are described in **MQTT Setup**. Simply connect to your IoTaaP MQTT instance and publish on or off to “ledstatus/led1” topic. Be sure to subscribe to the “iotaap/accelerometer” topic and you will se accelerometer coordinates in jSON format
 
 ```json
 {

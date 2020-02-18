@@ -13,17 +13,16 @@ nav:
   - IoTaaP - Serial: iotaap-serial.md
   - IoTaaP - ADC: iotaap-adc.md
   - IoTaaP - DAC: iotaap-dac.md
-  - IoTaaP - PWM: pwm.md
+  - IoTaaP - PWM: iotaap-pwm.md
   - IoTaaP - Hall: iotaap-hall.md
-  - IotaaP - Buzzer: iotaap-buzzer.md
+  - IoTaaP - Buzzer: iotaap-buzzer.md
   - IoTaaP - WiFi: iotaap-wifi.md
-  - CloudMQTT Setup: cloudmqtt-setup.md
-  - IotaaP - MQTT: iotaap-mqtt.md
+  - MQTT Setup: mqtt-setup.md
+  - IoTaaP - MQTT: iotaap-mqtt.md
   - IoTaaP - TCP Client: iotaap-tcpclient.md
   - IoTaaP - TCP Server: iotaap-tcpserver.md
   - IoTaaP - TSL2561: iotaap-tsl2561.md
   - IoTaaP - Grafana: iotaap-grafana.md
-  - IoTaaP - Mosquitto: iotaap-mosquitto.md
   - IoTaaP - MQTTS: iotaap-mqtts.md
   - IoTaaP - API: iotaap-api.md
         

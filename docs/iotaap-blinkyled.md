@@ -4,7 +4,7 @@ As one of the basic things to do while starting with new product development is 
 
 ## Create new project
 
-Create your new project in platformio in the same way we have done it in [**Working Environment**](https://www.iotaap.io/instructions/working-environment/) instructions. Just be sure to select your IoTaaP board and you are ready to go.
+Create your new project in platformio in the same way we have done it in **Working Environment** instructions. Just be sure to select your IoTaaP board and you are ready to go.
 
 ## Initial code setup
 
@@ -83,7 +83,7 @@ void loop()
   delay(500);
 }
 ```
-Now, upload your code to IoTaaP board as we have done it in [**Working Environment**](https://www.iotaap.io/instructions/working-environment/) instructions.
+Now, upload your code to IoTaaP board as we have done it in **Working Environment** instructions.
 
 If you have any problems with your code, please feel free to create a new topic in our [ **community page**.](https://community.iotaap.io/)
 

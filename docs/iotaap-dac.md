@@ -2,7 +2,7 @@
 
 DAC (Digital To Analog Converter)  is a system that converts a digital signal into an analog signal.
 
-![alt text](https://files.iotaap.io/assets/iotaap-tutorials/iotaap-dac/20190920_210218-300x169.gif"DAC gif")
+![alt text](https://files.iotaap.io/assets/iotaap-tutorials/iotaap-dac/dac-oscilloscope.gif"DAC Signal")
 
 In this guide we will generate voltages from 0 to 3.3V with onboard DAC (pin 26).
 
