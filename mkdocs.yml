@@ -4,7 +4,6 @@ site_description: 'IoTaaP Tutorials'
 repo_url: 'https://github.com/iotaap/tutorials'
 nav:
   - Home: index.md
-  - PWM: pwm.md
   - Working Environment: working-environment.md
   - IoTaaP - Pins: iotaap-pins.md
   - IoTaaP - Jumpers: iotaap-jumpers.md
@@ -14,6 +13,7 @@ nav:
   - IoTaaP - Serial: iotaap-serial.md
   - IoTaaP - ADC: iotaap-adc.md
   - IoTaaP - DAC: iotaap-dac.md
+  - IoTaaP - PWM: pwm.md
   - IoTaaP - Hall: iotaap-hall.md
   - IotaaP - Buzzer: iotaap-buzzer.md
   - IoTaaP - WiFi: iotaap-wifi.md

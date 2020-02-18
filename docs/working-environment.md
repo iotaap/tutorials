@@ -107,5 +107,5 @@ Open **platformio.ini** file located in your project tree and add the following 
 
 ```bash
 ; COM2
-upload_port = COM[2]
+upload_port = COM2
 ```
