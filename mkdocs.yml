@@ -25,6 +25,7 @@ nav:
   - IoTaaP - Grafana: iotaap-grafana.md
   - IoTaaP - MQTTS: iotaap-mqtts.md
   - IoTaaP - API: iotaap-api.md
+  - WS2812 LED Module: ws2812-module.md
         
 # Copyright
 copyright: 'Copyright IoTaaP'

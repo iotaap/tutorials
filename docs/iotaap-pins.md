@@ -12,12 +12,12 @@ IoTaaP has various I/O pins that can be configured for different features, such 
 | GND         | N/A       | N/A        | GND                                        |
 | 3.3V        | N/A       | N/A        | 3.3Vout (300mA MAX)                        |
 | RESET       | N/A       | N/A        | LOW level will reset module                |
-| P2          | YES       | YES        | P2 or LED1                                 |
+| P2          | YES       | YES        | P2 or LED2                                 |
 | P4          | YES       | YES        | P4                                         |
 | P12         | YES*      | YES        | Boot will fail if HIGH                     |
 | P13         | YES       | YES        | P13                                        |
 | P14         | YES       | YES        | Outputs PWM at boot                        |
-| P15         | YES       | YES        | Outputs PWM at boot. P15 or LED2           |
+| P15         | YES       | YES        | Outputs PWM at boot. P15 or LED1           |
 | P16         | YES       | YES        | P16                                        |
 | P17         | YES       | YES        | P17                                        |
 | SCL (I2C)   | YES       | YES        | P22 (4k7 pull-up to 3.3V)                  |
