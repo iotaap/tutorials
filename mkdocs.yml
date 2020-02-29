@@ -26,6 +26,7 @@ nav:
   - IoTaaP - MQTTS: iotaap-mqtts.md
   - IoTaaP - API: iotaap-api.md
   - WS2812 LED Module: ws2812-module.md
+  - Weather Module: weather-module.md
         
 # Copyright
 copyright: 'Copyright IoTaaP'
