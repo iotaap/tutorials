@@ -1,6 +1,6 @@
 # IoTaaP - ADC
 
-**Analog to Digital Converter (ADC)** is a system that converts an analog signal, such as a voltage, into a digital signal, just opposite of the [DAC](https://www.iotaap.io/instructions/iotaap-dac/). Our onboard controller (ESP32) has 12bit ADC onboard, on all pins but it also has a pretty non-linear characteristics as you can see on the chart below:
+**Analog to Digital Converter (ADC)** is a system that converts an analog signal, such as a voltage, into a digital signal, just opposite of the DAC. Our onboard controller (ESP32) has 12bit ADC onboard, on all pins but it also has a pretty non-linear characteristics as you can see on the chart below:
 
 ![alt text](https://files.iotaap.io/assets/iotaap-tutorials/iotaap-adc/ADC-non-linear-ESP32.png"ADC-non-linear-ESP32") 
 

@@ -47,6 +47,6 @@ When ‘forever’ parameter is set to ‘true’ tone will be generated until
 ```cpp
 iotaap.buzzer.stopTone();
 ```
-function is called. It’s a good practice to call stopTone() function even if ‘forever’ parameter is not true in order to release buzzer’s [PWM channel](https://www.iotaap.io/instructions/iotaap-pwm/).
+function is called. It’s a good practice to call stopTone() function even if ‘forever’ parameter is not true in order to release buzzer’s PWM channel.
 
 Try to generate some melody using this feature and post your solutions to our [**community page**](https://community.iotaap.io/).

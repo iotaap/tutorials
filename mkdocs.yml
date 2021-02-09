@@ -22,7 +22,6 @@ nav:
   - IoTaaP - TCP Client: iotaap-tcpclient.md
   - IoTaaP - TCP Server: iotaap-tcpserver.md
   - IoTaaP - TSL2561: iotaap-tsl2561.md
-  - IoTaaP - Grafana: iotaap-grafana.md
   - IoTaaP - MQTTS: iotaap-mqtts.md
   - WS2812 LED Module: ws2812-module.md
   - Weather Module: weather-module.md

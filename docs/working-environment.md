@@ -42,15 +42,11 @@ You can check the official PlatformIO documentation about IoTaaP Magnolia board 
 
 Now you can proceed with the next step and install IoTaaP library.
 
-## Installing IoTaaP Library
+## Installing IoTaaP Libraries
 
-In order to use all IoTaaP features out of the box, you have to install IoTaaP library.
+In order to use all IoTaaP features out of the box, you have to install IoTaaP libraries.
 
-Go to your **Platformio Home** tab and select **Libraries** from the side menu. Type “IoTaaP” in the search field, click on the “**IoTaaP** by MVT Solutions” and then click **Install**.
-
-![alt text](https://files.iotaap.io/assets/iotaap-tutorials/working-environment/iotaap-library-platfromio-iot-1024x326.png "IoTaaP Library")
-
-This will install IoTaaP library globally, and you will be able to use it in your projects.
+Go to your **Platformio Home** tab and select **Libraries** from the side menu. Type “IoTaaP” in the search field, click on the specific IoTaaP Library, like **IoTaaP OS** by IoTaaP Team and then click **Add to Project**.
 
 ## New Project
 
@@ -62,30 +58,16 @@ In **Project Wizard** you will be able to enter your project name, select your d
 
 Type your project name (e.g. MyCoolProject) and search for IoTaaP Magnolia board*
 
-*** **IF YOU CANNOT TYPE IN THE FIELDS, JUST DOUBLE CLICK ON ‘PIO HOME’ TAB IN YOUR VS CODE. This is a well-known bug in VS Code where it loses focus (hopefully they will fix this soon).**
-
-*** **IF YOU CANNOT FIND IoTaaP Magnolia BOARD, THEN YOU HAVE TO RESTART YOUR VS CODE TO REFRESH INSTALLED BOARDS**
-
 Click on **Finish** and wait a few moments for PlatformIO to configure your new project
 
 ![alt text](https://files.iotaap.io/assets/iotaap-tutorials/working-environment/new-project-created.jpg"New Project created")
 
 Your project structure is very simple, you will mostly use **‘lib‘** and **‘src‘** directories. Expand **src** directory, and you will find _**main.cpp**_ file, this is the main file of your new project with the following content:
 
-```cpp
-#include <Arduino.h>
-
-void setup() {
-  // put your setup code here, to run once:
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-```
-As you can guess, this program does nothing, but we will use it to test if everything works as it should.
-
 ## Testing your environment
+
+!!! info "IoTaaP Boards"
+    Our development boards, like [IoTaaP Magnolia](https://www.iotaap.io/boards/#wifi) contain FT232RL - USB to serial converter onboard, and the following environment testing is applicable to this kind of development board. If you have different development board, containing ESP32 module, you should check official documentation from the manufacturer.
 
 Connect your IoTaaP board with your PC using USB cable. Your PC should automatically install all drivers needed for your board to work. If you have trouble with automatic driver installation, you can [install your drivers manually](https://www.ftdichip.com/Drivers/VCP.htm)
 

@@ -1,6 +1,10 @@
 # IoTaaP - MQTTS
 
-This example is pretty similar to the [IoTaaP – MQTT](https://www.iotaap.io/instructions/iotaap-mqtt/). But pure MQTT communication is not safe, that’s why we prefere to use MQTTS (MQTT + SSL). In this example we will use Let’s Encrypt’s Cross Signed certificate, **IoTaaP Cloud** MQTT broker instance (although everything should work with other MQTT brokers).
+This example is pretty similar to the IoTaaP – MQTT. But pure MQTT communication is not safe, that’s why we prefer to use MQTTS (MQTT + SSL). In this example we will use Let’s Encrypt’s Cross Signed certificate, **IoTaaP Cloud**.
+
+!!! warning "IoTaaP Cloud supports only MQTTS"
+    Please note that from IoTaaP 2.0 release in January 2021, in order to enhance security of our system, IoTaaP Cloud supports only **MQTTS** connection and strictly defined **root topic** rules (every topic
+    starts with your MQTTS username, e.g. `/<your-username>/<your-topic>`).
 
 # Setup
 
@@ -14,51 +18,74 @@ In _**setup()**_ function we wil configure WiFi and connect IoTaaP to WiFi AP (w
 ```cpp
 iotaap.wifi.connect("<your-ssid>","<your-password>");
 ```
-Now it’s time to initialize MQTT object and connect IoTaaP to our **iotaap.cloud** instance.
+Now it’s time to initialize MQTT object and connect IoTaaP to our MQTT Instance.
 
 ```cpp
-iotaap.mqtt.connect("iotaap_client", "iotaap.cloud", 8883, callback, true, "USERNAME", "PASSWORD", CA_cert);
+iotaap.mqtt.connect("iotaap_client", "mqtt1.iotaap.io", 8883, callback, true, "USERNAME", "PASSWORD", CA_cert);
 ```
-This line of code will connect IoTaaP to the Mosquitto broker running on IoTaaP Cloud. Notice the new parameter here: **CA_cert**. In the [IoTaaP – MQTT](https://www.iotaap.io/instructions/iotaap-mqtt/) example **secure** parameter was set to **false**, now it’s set to **true** and we have to pass CA Certificate to the function.
-
-We are using Let’s Encrypt Cross Signed certificate for this, if your MQTT broker provider is using different Certificate provider for their server instance, you will probably need to obtain the CA Certificate or Root certificate of their Certificate provider. You can read more about Let’s Encrypt Chain of Trust [here](https://letsencrypt.org/certificates/).
-
-In order to enhance our security, we are using Cross Signed certificate. Let’s Encrypt Cross signed certificate can be found [here](https://letsencrypt.org/certs/trustid-x3-root.pem.txt).
+This line of code will connect ESP32 to the MQTT broker running on IoTaaP Cloud. Notice the new parameter here: **CA_cert**. In the IoTaaP – MQTT example **secure** parameter was set to **false**, now it’s set to **true** and we have to pass CA Certificate to the function.
 
 In order to user CA Certificate you will have to define it just below **IoTaaP iotaap;** line in your code:
 
 ```cpp
 const char *CA_cert = "-----BEGIN CERTIFICATE-----\n"
-                      "MIIDSjCCAjKgAwIBAgIQRK+wgNajJ7qJMDmGLvhAazANBgkqhkiG9w0BAQUFADA/\n"
-                      "MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT\n"
-                      "DkRTVCBSb290IENBIFgzMB4XDTAwMDkzMDIxMTIxOVoXDTIxMDkzMDE0MDExNVow\n"
-                      "PzEkMCIGA1UEChMbRGlnaXRhbCBTaWduYXR1cmUgVHJ1c3QgQ28uMRcwFQYDVQQD\n"
-                      "Ew5EU1QgUm9vdCBDQSBYMzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB\n"
-                      "AN+v6ZdQCINXtMxiZfaQguzH0yxrMMpb7NnDfcdAwRgUi+DoM3ZJKuM/IUmTrE4O\n"
-                      "rz5Iy2Xu/NMhD2XSKtkyj4zl93ewEnu1lcCJo6m67XMuegwGMoOifooUMM0RoOEq\n"
-                      "OLl5CjH9UL2AZd+3UWODyOKIYepLYYHsUmu5ouJLGiifSKOeDNoJjj4XLh7dIN9b\n"
-                      "xiqKqy69cK3FCxolkHRyxXtqqzTWMIn/5WgTe1QLyNau7Fqckh49ZLOMxt+/yUFw\n"
-                      "7BZy1SbsOFU5Q9D8/RhcQPGX69Wam40dutolucbY38EVAjqr2m7xPi71XAicPNaD\n"
-                      "aeQQmxkqtilX4+U9m5/wAl0CAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNV\n"
-                      "HQ8BAf8EBAMCAQYwHQYDVR0OBBYEFMSnsaR7LHH62+FLkHX/xBVghYkQMA0GCSqG\n"
-                      "SIb3DQEBBQUAA4IBAQCjGiybFwBcqR7uKGY3Or+Dxz9LwwmglSBd49lZRNI+DT69\n"
-                      "ikugdB/OEIKcdBodfpga3csTS7MgROSR6cz8faXbauX+5v3gTt23ADq1cEmv8uXr\n"
-                      "AvHRAosZy5Q6XkjEGB5YGV8eAlrwDPGxrancWYaLbumR9YbK+rlmM6pZW87ipxZz\n"
-                      "R8srzJmwN0jP41ZL9c8PDHIyh8bwRLtTcm1D9SZImlJnt1ir/md2cXjbDaJWFBM5\n"
-                      "JDGFoqgCWjBH4d1QB7wCCZAA62RjYJsWvIjJEubSfZGL+T0yjWW06XyxV3bqxbYo\n"
-                      "Ob8VZRzI9neWagqNdwvYkQsEjgfbKbYK7p2CNTUQ\n"
+                      "MIIGEzCCA/ugAwIBAgIQfVtRJrR2uhHbdBYLvFMNpzANBgkqhkiG9w0BAQwFADCB\n"
+                      "iDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCk5ldyBKZXJzZXkxFDASBgNVBAcTC0pl\n"
+                      "cnNleSBDaXR5MR4wHAYDVQQKExVUaGUgVVNFUlRSVVNUIE5ldHdvcmsxLjAsBgNV\n"
+                      "BAMTJVVTRVJUcnVzdCBSU0EgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkwHhcNMTgx\n"
+                      "MTAyMDAwMDAwWhcNMzAxMjMxMjM1OTU5WjCBjzELMAkGA1UEBhMCR0IxGzAZBgNV\n"
+                      "BAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYGA1UE\n"
+                      "ChMPU2VjdGlnbyBMaW1pdGVkMTcwNQYDVQQDEy5TZWN0aWdvIFJTQSBEb21haW4g\n"
+                      "VmFsaWRhdGlvbiBTZWN1cmUgU2VydmVyIENBMIIBIjANBgkqhkiG9w0BAQEFAAOC\n"
+                      "AQ8AMIIBCgKCAQEA1nMz1tc8INAA0hdFuNY+B6I/x0HuMjDJsGz99J/LEpgPLT+N\n"
+                      "TQEMgg8Xf2Iu6bhIefsWg06t1zIlk7cHv7lQP6lMw0Aq6Tn/2YHKHxYyQdqAJrkj\n"
+                      "eocgHuP/IJo8lURvh3UGkEC0MpMWCRAIIz7S3YcPb11RFGoKacVPAXJpz9OTTG0E\n"
+                      "oKMbgn6xmrntxZ7FN3ifmgg0+1YuWMQJDgZkW7w33PGfKGioVrCSo1yfu4iYCBsk\n"
+                      "Haswha6vsC6eep3BwEIc4gLw6uBK0u+QDrTBQBbwb4VCSmT3pDCg/r8uoydajotY\n"
+                      "uK3DGReEY+1vVv2Dy2A0xHS+5p3b4eTlygxfFQIDAQABo4IBbjCCAWowHwYDVR0j\n"
+                      "BBgwFoAUU3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFI2MXsRUrYrhd+mb\n"
+                      "+ZsF4bgBjWHhMA4GA1UdDwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0G\n"
+                      "A1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAbBgNVHSAEFDASMAYGBFUdIAAw\n"
+                      "CAYGZ4EMAQIBMFAGA1UdHwRJMEcwRaBDoEGGP2h0dHA6Ly9jcmwudXNlcnRydXN0\n"
+                      "LmNvbS9VU0VSVHJ1c3RSU0FDZXJ0aWZpY2F0aW9uQXV0aG9yaXR5LmNybDB2Bggr\n"
+                      "BgEFBQcBAQRqMGgwPwYIKwYBBQUHMAKGM2h0dHA6Ly9jcnQudXNlcnRydXN0LmNv\n"
+                      "bS9VU0VSVHJ1c3RSU0FBZGRUcnVzdENBLmNydDAlBggrBgEFBQcwAYYZaHR0cDov\n"
+                      "L29jc3AudXNlcnRydXN0LmNvbTANBgkqhkiG9w0BAQwFAAOCAgEAMr9hvQ5Iw0/H\n"
+                      "ukdN+Jx4GQHcEx2Ab/zDcLRSmjEzmldS+zGea6TvVKqJjUAXaPgREHzSyrHxVYbH\n"
+                      "7rM2kYb2OVG/Rr8PoLq0935JxCo2F57kaDl6r5ROVm+yezu/Coa9zcV3HAO4OLGi\n"
+                      "H19+24rcRki2aArPsrW04jTkZ6k4Zgle0rj8nSg6F0AnwnJOKf0hPHzPE/uWLMUx\n"
+                      "RP0T7dWbqWlod3zu4f+k+TY4CFM5ooQ0nBnzvg6s1SQ36yOoeNDT5++SR2RiOSLv\n"
+                      "xvcRviKFxmZEJCaOEDKNyJOuB56DPi/Z+fVGjmO+wea03KbNIaiGCpXZLoUmGv38\n"
+                      "sbZXQm2V0TP2ORQGgkE49Y9Y3IBbpNV9lXj9p5v//cWoaasm56ekBYdbqbe4oyAL\n"
+                      "l6lFhd2zi+WJN44pDfwGF/Y4QA5C5BIG+3vzxhFoYt/jmPQT2BVPi7Fp2RBgvGQq\n"
+                      "6jG35LWjOhSbJuMLe/0CjraZwTiXWTb2qHSihrZe68Zk6s+go/lunrotEbaGmAhY\n"
+                      "LcmsJWTyXnW0OMGuf1pGg+pRyrbxmRE1a6Vqe8YAsOf4vmSyrcjC8azjUeqkk+B5\n"
+                      "yOGBQMkKW+ESPMFgKuOXwIlCypTPRpgSabuY0MLTDXJLR27lk8QyKGOHQ+SwMj4K\n"
+                      "00u/I5sUKUErmgQfky3xxzlIPK1aEn8=\n"
                       "-----END CERTIFICATE-----\n";
 ```
+
+Our system is fully protected by Sectigo.
+
+![alt text](https://files.iotaap.io/assets/iotaap-os/assets/sectigo_seal.png )
+
+**Root Certificate**
+
+If you need root certificate mentioned above, you can get it [here](https://files.iotaap.io/assets/iotaap-os/assets/ca.crt).
+
+!!! warning "Invalid certificate"
+    System will not be able to connect to the MQTT server or do the OTA update if certificate is missing or invalid.
+
 **Notice that we are using ‘\n’ and this is the only way to make your certificate work properly, so if you are using different certificate make sure to keep the same formatting.** 
 
 **callback()** is the function that will be called every time when something arrives to our subscribed topic(s). We will define this function later.
 
 ```cpp
-iotaap.mqtt.subscribe("ledstatus/led1");
+iotaap.mqtt.subscribe("/<your-username>/ledstatus/led1");
 ```
-This line of code will subscribe IoTaaP to “ledstatus/led1” topic. We will define our callback in the next step.
+This line of code will subscribe IoTaaP to `/<your-username>/ledstatus/led1` topic. We will define our callback in the next step.
 
-_Keep in mind that every CA Certificate or Root certificate has it’s own expiration date. If the certificate is not valid or if it’s expired your MQTTS connection will not work! Make sure to implement some check-update mechanism to update your certificates stored on your IoTaaP magnolia board. The best way to implement this mechanism is to use OTA or FOTA. With OTA or FOTA you will be able to update your device’s firmware remotely with the new version that contains updated certificate._
+*Keep in mind that every CA Certificate or Root certificate has it’s own expiration date. If the certificate is not valid or if it’s expired your MQTTS connection will not work! This is completely automated and covered with our [IoTaaP OS](https://docs.iotaap.io/docs-iotaap-os/).*
 
 ## Callback function
 
@@ -77,7 +104,7 @@ void callback(char* topic, byte* message, unsigned int length) {
     messageTemp += (char)message[i];
   }
 
-  if (String(topic) == "ledstatus/led1") {
+  if (String(topic) == "/<your-username>/ledstatus/led1") {
     if(messageTemp == "on"){
       iotaap.misc.setPin(ONBOARD_LED1);
     }
@@ -87,9 +114,13 @@ void callback(char* topic, byte* message, unsigned int length) {
   }
 }
 ```
-This function will convert our message into **String** type and it will check if our trigger topic was _“ledstatus/led1“_, if this is true, our function will check message content. Content must be “on” in order to turn the LED1 on, or “off” to turn it off.
+This function will convert our message into **String** type and it will check if our trigger topic was `/<your-username>/ledstatus/led1`, if this is true, our function will check message content. Content must be “on” in order to turn the LED1 on, or “off” to turn it off.
 
 ## Loop
+
+!!! info "IoTaaP Magnolia V2 development board"
+    Please note that our production version of IoTaaP Magnolia Development Board does not contain accelerometer anymore, and accelerometer option is removed
+    from the IoTaaP Core library. But this example is a good starting point for your own implementation.
 
 In our main loop we will publish our accelerometer data in jSON format, and we will call mandatory function keepAlive() that will keep our MQTT connection active.
 
@@ -100,34 +131,32 @@ void loop()
 {
   iotaap.mqtt.keepAlive();
 
-  accelerometer acc = iotaap.accelerometer.getRaw();
-
-  doc["x"] = acc.x;
-  doc["y"] = acc.y;
-  doc["z"] = acc.z;
+  doc["x"] = 510;
+  doc["y"] = 10;
+  doc["z"] = 24;
 
   char accJson[255];
 
   serializeJson(doc, accJson);
 
-  iotaap.mqtt.publish("iotaap/accelerometer", accJson);
+  iotaap.mqtt.publish("/<your-username>/iotaap/accelerometer", accJson);
 
   delay(200);
 }
 ```
-This code will keep our MQTT connection active, but it will also read accelerometer data (in accelerometer structure). Axis values will be saved to “doc” with appropriate axis names. Function serializeJson(doc,accJson); will convert **doc** to jSON string, and finally _iotaap.mqtt.publish(“iotaap/accelerometer”, accJson);_ will publish values to _“iotaap/accelerometer”_ topic.
+This code will keep our MQTT connection active, but it will also read accelerometer data. Axis values will be saved to “doc” with appropriate axis names. Function serializeJson(doc,accJson); will convert **doc** to jSON string, and finally `iotaap.mqtt.publish(“/<your-username>/iotaap/accelerometer”, accJson);` will publish values to `/<your-username>/iotaap/accelerometer` topic.
 
 ![alt text](https://files.iotaap.io/assets/iotaap-tutorials/iotaap-mqtt/iotaap-accelerometer-topic-1024x368.jpg"IoTaaP/accelerometer")
 
 ## Testing
 
-We will use MQTT.fx for testing. MQTT.fx installation process and usage are described [here](https://www.iotaap.io/instructions/cloudmqtt-setup/#1568209144227-ca19357a-d1f5). Simply connect to your **IoTaaP Cloud** (or any other MQTT broker) instance and publish on or off to “ledstatus/led1” topic. Be sure to subscribe to the “iotaap/accelerometer” topic and you will se accelerometer coordinates in jSON format
+We will use MQTT.fx for testing. Simply connect to your **IoTaaP Cloud** (or any other MQTT broker) instance and publish on or off to `/<your-username>/ledstatus/led1` topic. Be sure to subscribe to the `/<your-username>/iotaap/accelerometer` topic and you will se accelerometer coordinates in jSON format
 
 ```json
 {
-  "x" : 1921,
-  "y" : 1936,
-  "z" : 1109
+  "x" : 510,
+  "y" : 10,
+  "z" : 24
 }
 ```
 Now, create a code that will control 2 LED’s and publish button status, share your solutions with the [community](https://community.iotaap.io/).
