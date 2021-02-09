@@ -16,6 +16,12 @@ The unique system built for ESP32 SoC which provides everything you need to succ
 In order to easily deploy and explore the following example, please first read the [IoTaaP OS Documentation](https://docs.iotaap.io/docs-iotaap-os/). Prepare
 your SD card, [download FS Structure](https://files.iotaap.io/assets/iotaap-os/assets/fs_structure.zip) and extract it to your SD card. Don't forget to update *default.cfg* with your data, obtained from [IoTaaP Console](https://console.iotaap.io).
 
+## Installing IoTaaP OS using PlatformIO
+
+In order to start using IoTaaP OS, we recommend using PlatformIO framework, info on how to start a new project using PlatformIO, can be found [here](https://docs.iotaap.io/docs-tutorials/working-environment/).
+
+You have to declare library dependencies in your `platformio.ini` file, by using [lib_deps](https://docs.platformio.org/page/projectconf/section_env_library.html) option. You can define the specific library version, although we recommend using the newest version in your projects.
+
 ## Example
 
 In the following example you can see how to use **IoTaaP OS** in order to successfully connect your device to the cloud,
@@ -84,3 +90,45 @@ void loop()
 }
 
 ```
+
+## Example PlatformIO project configuration
+
+```
+[env:myenv]
+platform = espressif32
+board = iotaap_magnolia
+framework = arduino
+
+lib_deps =
+
+     # RECOMMENDED
+     # Accept new functionality in a backwards compatible manner and patches
+     iotaap/IoTaaP OS @ ^3.0.1
+
+     # Accept only backwards compatible bug fixes
+     # (any version with the same major and minor versions, and an equal or greater patch version)
+     iotaap/IoTaaP OS @ ~3.0.1
+
+     # The exact version
+     iotaap/IoTaaP OS @ 3.0.1
+
+```
+
+More info about Library installation using PlatformIO can be found [here](https://platformio.org/lib/show/11733/IoTaaP/installation).
+
+## Using 16MB Flash with ESP32
+
+Although IoTaaP OS can work with 4MB of flash memory, we recommend using ESP32 modules with 16MB of flash. In order to configure this option
+in your PlatformIO project, you can use the following lines in your `platformio.ini`
+
+```
+board_build.partitions = default_16MB.csv
+board_upload.flash_size=16MB
+
+```
+
+## Known issues
+
+!!! warning "Known issue with ESP32 framework"
+    Please note that we are aware of the issue with *arduino-esp32* framework, caused by **WiFiClientSecure** library. You can read more
+    about this issue, and find the **workaround** [here](https://community.iotaap.io/t/esp32-restarts/)
