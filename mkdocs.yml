@@ -9,6 +9,7 @@ nav:
   - IoTaaP Cloud - OTA: iotaap-cloud-ota.md
   - IoTaaP Cloud - Events: iotaap-cloud-events.md
   - IoTaaP Cloud - Visualization: iotaap-cloud-visualization.md
+  - IoTaaP OS: iotaap-os.md
   - IoTaaP Core - Pins: iotaap-pins.md
   - IoTaaP Core - Jumpers: iotaap-jumpers.md
   - IoTaaP Core - LED: iotaap-blinkyled.md
