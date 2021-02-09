@@ -5,28 +5,28 @@ repo_url: 'https://github.com/iotaap/tutorials'
 nav:
   - Home: index.md
   - Working Environment: working-environment.md
-  - IoTaaP - Pins: iotaap-pins.md
-  - IoTaaP - Jumpers: iotaap-jumpers.md
-  - IoTaaP - Blinky LED: iotaap-blinkyled.md
-  - IoTaaP - MISC: iotaap-misc.md
-  - IoTaaP - OLED: iotaap-oled.md
-  - IoTaaP - Serial: iotaap-serial.md
-  - IoTaaP - ADC: iotaap-adc.md
-  - IoTaaP - DAC: iotaap-dac.md
-  - IoTaaP - PWM: iotaap-pwm.md
-  - IoTaaP - Hall: iotaap-hall.md
-  - IoTaaP - Buzzer: iotaap-buzzer.md
-  - IoTaaP - WiFi: iotaap-wifi.md
   - MQTT Setup: mqtt-setup.md
-  - IoTaaP - MQTT: iotaap-mqtt.md
-  - IoTaaP - TCP Client: iotaap-tcpclient.md
-  - IoTaaP - TCP Server: iotaap-tcpserver.md
-  - IoTaaP - TSL2561: iotaap-tsl2561.md
-  - IoTaaP - MQTTS: iotaap-mqtts.md
-  - WS2812 LED Module: ws2812-module.md
-  - Weather Module: weather-module.md
-  - CAN Module: can-module.md
-  - Servo Motor Module: servo-motor-module.md
+  - IoTaaP Core - Pins: iotaap-pins.md
+  - IoTaaP Core - Jumpers: iotaap-jumpers.md
+  - IoTaaP Core - LED: iotaap-blinkyled.md
+  - IoTaaP Core - MISC: iotaap-misc.md
+  - IoTaaP Core - OLED: iotaap-oled.md
+  - IoTaaP Core - Serial: iotaap-serial.md
+  - IoTaaP Core - ADC: iotaap-adc.md
+  - IoTaaP Core - DAC: iotaap-dac.md
+  - IoTaaP Core - PWM: iotaap-pwm.md
+  - IoTaaP Core - Hall: iotaap-hall.md
+  - IoTaaP Core - Buzzer: iotaap-buzzer.md
+  - IoTaaP Core - WiFi: iotaap-wifi.md
+  - IoTaaP Core - TCP Client: iotaap-tcpclient.md
+  - IoTaaP Core - TCP Server: iotaap-tcpserver.md
+  - IoTaaP Core - TSL2561: iotaap-tsl2561.md
+  - IoTaaP Core - MQTT: iotaap-mqtt.md
+  - IoTaaP Core - MQTTS: iotaap-mqtts.md
+  - Module - WS2812 LED: ws2812-module.md
+  - Module - Weather: weather-module.md
+  - Module - CAN: can-module.md
+  - Module - Servo Motor: servo-motor-module.md
         
 copyright: 'Copyright &copy; IoTaaP'
 
