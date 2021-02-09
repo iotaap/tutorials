@@ -7,6 +7,6 @@ Video tutorial - Device OTA Update:
 [![IoTaaP Device OTA Update](http://img.youtube.com/vi/vB9ZZfBHFmw/0.jpg)](http://www.youtube.com/watch?v=vB9ZZfBHFmw "IoTaaP Device OTA Update")
 
 
-Video tutorial - Device OTA Update:
+Video tutorial - Group OTA Update:
 
 [![IoTaaP Group OTA Update](http://img.youtube.com/vi/hwBVqwFlE6k/0.jpg)](http://www.youtube.com/watch?v=hwBVqwFlE6k "IoTaaP Group OTA Update")
