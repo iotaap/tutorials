@@ -139,7 +139,7 @@ void loop()
 
   serializeJson(doc, accJson);
 
-  iotaap.mqtt.publish("/<your-username>/iotaap/accelerometer", accJson);
+  iotaap.mqtt.publish("/<your-username>/iotaap/accelerometer", accJson, false);
 
   delay(200);
 }
