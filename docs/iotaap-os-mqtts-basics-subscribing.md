@@ -82,8 +82,7 @@ void callback(char *topic, byte *message, unsigned int length)
 ```
 
 ## Setup Function
-Setup is the configuration section, which runs at the start of the system, handling the connections to WiFi and MQTT Brokers, It is also suggested to trigger an OTA update check, this will compare the version given in [Including IoTaaP_OS](#IoTaaP_OS) against any firmware version uploaded to OTA update section on the IoTaaP Console.
-{For More details on OTA See -}
+Setup is the configuration section, which runs at the start of the system, handling the connections to WiFi and MQTT Brokers, It is also suggested to trigger an OTA update check, this will compare the version given in [Including IoTaaP_OS](#IoTaaP_OS) against any firmware version uploaded to OTA update section on the IoTaaP Console. For more details see the separate [OTA tutorial.](https://docs.iotaap.io/docs-tutorials/iotaap-cloud-ota/)
 
 ```cpp
 void setup()
@@ -115,7 +114,7 @@ void loop()
 ```
 
 ## Testing
-It is highly suggested to test this we apply the methodology found under [Iotaap-cloud-mqtt](https://docs.iotaap.io/docs-tutorials/iotaap-cloud-mqtt/#testing-with-mqttfx) 
+It is highly suggested to test this we apply the methodology found under [Iotaap-cloud-mqtt.](https://docs.iotaap.io/docs-tutorials/iotaap-cloud-mqtt/#testing-with-mqttfx) 
 
 Send a Publish Message to the topic `/<username>/new_topic` using MQTT fx Client and check the serial monitor for an output.
 
@@ -123,10 +122,10 @@ The message should appear on screen similar to below.
 ![successful receive](images/Successful_receive.png)
 
 
-If this is not the case, please re-read to make sure you have not missed any steps. Check the # debugging section. If you still cannot solve the issue please ask for help at our support forum found here {Link}.
+If this is not the case, please re-read to make sure you have not missed any steps. If you still cannot solve the issue please ask for help at our support forum [found here.](https://community.iotaap.io/c/support/6)
 
 
-# Subscribing & Un-Subscribing
+## Subscribing & Un-Subscribing
 
 In the past example we subscribed to a topic in the setup(). This is fantastic if our use case requires to always be subscribed to a topic.
 
@@ -168,7 +167,7 @@ void loop()
 }
 ```
 
-# Multiple Topics
+## Multiple Topics
 
 IoTaaP MQTT supports as many topics as the hardware can handle, they can be subscribed to in parallel and receive on multiple topics at once.
 
@@ -192,10 +191,3 @@ void loop()
   delay(500);
 }
 ```
-
-
-
-
-
-
-
