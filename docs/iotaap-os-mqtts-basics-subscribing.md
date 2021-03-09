@@ -40,7 +40,7 @@ void setup()
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   iotaapOs.checkForUpdates(); // Manually check for updates at startup
-  iotaapOs.basicSubscribe("new_topic"); // subscript to topic
+  iotaapOs.basicSubscribe("new_topic"); // subscribe to topic
 }
 
 void loop()

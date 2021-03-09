@@ -31,7 +31,7 @@ In the steps below we will go through the process of creating your Free MQTT ins
 
 ## Creating new instance
 
-From the right sidebar select **“MQTT“**. In the MQTT page simpy click on the green "+" button, and our system will automatically generate and configure new MQTTS instance for you. 
+From the right sidebar select **“MQTT“**. In the MQTT page simply click on the green "+" button, and our system will automatically generate and configure new MQTTS instance for you. 
 
 ![alt text](https://files.iotaap.io/assets/iotaap-tutorials/cloudmqtt-setup/iotaap-mqtt-instance.png"Create instance")
 
@@ -154,7 +154,7 @@ Important things about MQTT topic names:
     For best performance and in order to enable IoTaaP Console full debugging performance your data should be JSON structured instead of using plain text.
 
 
-## Subrscribing
+## Subscribing
 
 Now when we are sure that our connection works and that we can publish, we will subscribe our “client” to the topic.
 
