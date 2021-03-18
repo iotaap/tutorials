@@ -225,6 +225,8 @@ Results expected as below.
 
 Notice the value changes as the Random function uses different numbers and time increasing in 1 second increments.
 
+This should publish to `/<username>/<topic>`  
+(note - add unique username found under console)
 
 ## IoTaaP OS Background Publish
 
