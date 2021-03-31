@@ -65,3 +65,7 @@ You can monitor update status, and overall device status in device details inter
 ## Firmware version
 
 Please ensure that you enter the same version to the **Version** field in the console, and as fwVersion parameter in your main code. 
+
+Also, after successfull update and restart, at each IoTaaP OS boot, you will be able to see the current firmware version, as well as IoTaaP OS version
+
+![alt text](https://files.iotaap.io/assets/iotaap-tutorials/remote-flash/serial_output.PNG "IoTaaP OS - Serial output")
