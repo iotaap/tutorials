@@ -6,15 +6,16 @@ The unique system built for ESP32 SoC which provides everything you need to succ
 
 * WiFi Module - Manages WiFi connection to the AP
 * MQTT Module - Manages MQTTS connection with IoTaaP Cloud
-* OTA Update Module - Periodically checking for updates and manages update process
+* OTA Update Module - Periodically checking for updates and manages remote flashing process
 * HMI Module - Managing LED and Serial/MQTT configuration menu
-* File System Module - Managing file system on SD card
+* File System Module - Managing file system on SD card and internal FAT system
 * System Process Module - Manages various system processes for normal operation
 
 ## IoTaaP OS Documentation
 
-In order to easily deploy and explore the following example, please first read the [IoTaaP OS Documentation](https://docs.iotaap.io/docs-iotaap-os/). Prepare
-your SD card, [download FS Structure](https://files.iotaap.io/assets/iotaap-os/assets/fs_structure.zip) and extract it to your SD card. Don't forget to update *default.cfg* with your data, obtained from [IoTaaP Console](https://console.iotaap.io).
+In order to easily deploy and explore the following example, please first read the [IoTaaP OS Documentation](https://docs.iotaap.io/docs-iotaap-os/). Internal filesystem will be automatically created during first boot. 
+Since version 4 of the IoTaaP OS, SD card is not mandatory in order for system to boot. If SD card is not present features like data backup and logs will be disabled. Since version 4, IoTaaP OS uses Web Configurator
+for configuration. 
 
 ## Installing IoTaaP OS using PlatformIO
 
@@ -52,6 +53,8 @@ void setup()
 {
   char ownerString[128]; // Char array used to store custom parameter
   char deviceId[30];     // Char array used to store system parameter
+
+  iotaapOs.start(); // Start IoTaaP OS
 
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
@@ -103,29 +106,32 @@ lib_deps =
 
      # RECOMMENDED
      # Accept new functionality in a backwards compatible manner and patches
-     iotaap/IoTaaP OS @ ^3.0.1
+     iotaap/IoTaaP OS @ ^4.0.0
 
      # Accept only backwards compatible bug fixes
      # (any version with the same major and minor versions, and an equal or greater patch version)
-     iotaap/IoTaaP OS @ ~3.0.1
+     iotaap/IoTaaP OS @ ~4.0.0
 
      # The exact version
-     iotaap/IoTaaP OS @ 3.0.1
+     iotaap/IoTaaP OS @ 4.0.0
 
 ```
 
 More info about Library installation using PlatformIO can be found [here](https://platformio.org/lib/show/11733/IoTaaP/installation).
 
-## Using 16MB Flash with ESP32
+## Using custom partitions with ESP32
 
-Although IoTaaP OS can work with 4MB of flash memory, we recommend using ESP32 modules with 16MB of flash. In order to configure this option
-in your PlatformIO project, you can use the following lines in your `platformio.ini`
+Although IoTaaP OS can work with 4MB of flash memory, we recommend using ESP32 modules with 16MB of flash. Starting from version 4.0.0, IoTaaP OS
+requires custom partition table in order to work. Configuration .csv files are available under **partitions** directory of the library. Custom partition
+files can be configured in `platformio.ini`:
 
 ```
-board_build.partitions = default_16MB.csv
+board_build.partitions = partitions/default_16MB_fat.csv
 board_upload.flash_size=16MB
 
 ```
+
+Please note that `partitions` directory should be on the same level as your `src` directory, for the above configuration to work properly.
 
 ## Known issues
 

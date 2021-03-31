@@ -10,14 +10,10 @@ nav:
   - IoTaaP Cloud - Events: iotaap-cloud-events.md
   - IoTaaP Cloud - Visualization: iotaap-cloud-visualization.md
   - IoTaaP OS: iotaap-os.md
-  - IoTaaP OS: iotaap-os-mqtts-basics-subscribing.md
-<<<<<<< HEAD
-  - IoTaaP OS: iotaap-os-mqtts-basics-JSON.md
-  - IoTaaP OS: iotaap-os-mqtts-basics-publishing.md
-  - IoTaaP OS: iotaap-os-mqtts-basics-parameters.md
-=======
-  - IoTaaP OS: iotaap-os-mqtts-basics-publishing.md
->>>>>>> f1e05d8c601c546771003fb7e7314ed8d2547714
+  - IoTaaP OS - Subscribing: iotaap-os-mqtts-basics-subscribing.md
+  - IoTaaP OS - JSON: iotaap-os-mqtts-basics-JSON.md
+  - IoTaaP OS - Publishing: iotaap-os-mqtts-basics-publishing.md
+  - IoTaaP OS - Parameters: iotaap-os-mqtts-basics-parameters.md
   - IoTaaP Core - Pins: iotaap-pins.md
   - IoTaaP Core - Jumpers: iotaap-jumpers.md
   - IoTaaP Core - LED: iotaap-blinkyled.md

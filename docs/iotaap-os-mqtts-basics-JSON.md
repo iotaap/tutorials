@@ -1,4 +1,4 @@
-# JSON
+# IoTaaP OS - JSON
 Within the IoTaaP Ecosystem we are required to send data beween devices. To keep a standard format we use JSON for all Machine to Machine (M2M) exchanges.
 
 ## Why JSON and how it works.
@@ -11,7 +11,7 @@ Normally the first value is a category, with the second being the value.
 
 JSON can also have multiple pairs of values within an object.
 
-```cpp
+```json
 {
     "category_1" : "value_1",
     "category_2" : "value_2",
@@ -21,11 +21,11 @@ JSON can also have multiple pairs of values within an object.
 ## Examples using Arduino JSON
 To parse data into JSON format we suggest including the [Arduino JSON library](https://arduinojson.org/) to parse data into JSON format.
 
-This can be achieved by adding `ArduinoJson` to the Lib_deps within the platformio.ini file within the project.
+This can be achieved by adding `ArduinoJson` to the `lib_deps` within the platformio.ini file within the project.
 
 ```
 lib_deps = 
-    iotaap/IoTaaP OS @ ^3.0.2 
+    iotaap/IoTaaP OS @ ^4.0.0 
     arduinoJson
 ```
 First we need to include the ArduinoJson library within our main.cpp.
@@ -82,6 +82,7 @@ void callback(char *topic, byte *message, unsigned int length)
 
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   delay(1000);
@@ -98,7 +99,7 @@ void loop()
 ```
 ## End result
 Serial output of Json Object should appear like so.
-```cpp
+```json
 {"date":"2020-01-01","time":"00:01:01"}
 {"date":"2020-01-01","time":"00:01:01"}
 ```

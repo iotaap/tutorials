@@ -3,10 +3,9 @@
 Publishing in MQTT is the action of creating a message and then sending that message through a MQTT broker to all subscribers of a topic.
 This is similar to how local News channels only show news relevant to your area. The broker understands who is subscribed to a topic and will only share with those devices. To better understand subscription please [read subscription tutorial](iotaap-os-mqtts-basics-subscribing.md).
 
-There is multiple ways to publish supported within IoTaaP OS. This tutorial on publishing will walk through each in depth. The direct API can be found in the [docs](https://docs.iotaap.io/docs-iotaap-os/functions/#int-basiccloudpublish)
+There is multiple ways to publish supported within IoTaaP OS. This tutorial on publishing will walk through each in depth. The direct API can be found in the [docs](https://docs.iotaap.io/docs-iotaap-os/functions/#int-basiccloudpublish).
 
-
-To publish data in IoTaaP we use JSON as the universal message format. If you are not familar with JSON We suggest you read the [JSON tutorial](iotaap-os-mqtts-basics-JSON.md)
+To publish data in IoTaaP we use JSON as the universal message format. If you are not familar with JSON We suggest you read the [JSON tutorial](iotaap-os-mqtts-basics-JSON.md).
 
 ## Basic Cloud Publish
 The simplest publish command is the basic cloud publish.
@@ -50,6 +49,7 @@ void callback(char *topic, byte *message, unsigned int length)
 
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   iotaapOs.basicCloudPublish("{\"my_simple_text\":\"Hello IoT World!\"}", "simple_topic"); // Publish simple (escaped) JSON to: /<username>/simple_topic
@@ -61,12 +61,12 @@ void loop()
   delay(1000);
 }
 ```
-A Basic Cloud publish sends a message to a topic. This is can be run within the `setup function` for a one time run as seen above, or within the `loop function` for continuous publishing.
+A Basic Cloud publish sends a message to a topic. This can be run within the `setup function` for a one time run as seen above, or within the `loop function` for continuous publishing.
 
 This should publish to `/<username>/<topic>`  
 (note - add unique username found under console)
 
-This can be tested applying the methodology found under [Iotaap-cloud-mqtt.](https://docs.iotaap.io/docs-tutorials/iotaap-cloud-mqtt/#testing-with-mqttfx) 
+This can be tested applying the methodology found under [IoTaaP Cloud - MQTT](https://docs.iotaap.io/docs-tutorials/iotaap-cloud-mqtt/#testing-with-mqttfx) 
 
 This message should appear similar to.
 ![successful send](images/Successful_send.png)
@@ -110,6 +110,7 @@ void callback(char *topic, byte *message, unsigned int length)
 
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   iotaapOs.deviceCloudPublish("{\"Device_check\":\"Device is Transmitting OK!\"}", "device_topic");  
@@ -179,6 +180,7 @@ void callback(char *topic, byte *message, unsigned int length)
 
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   delay(1000);
@@ -209,7 +211,7 @@ IoTaaP and most modern devices calculate time since the Epoch as a way to keep a
 IoTaaP OS uses a NTP Server (a Server which responds with time) to sync the system clock with present time.
 If you receive a parameter with Epoch time, the most likely reason is that the parameter was published after a reset and before IoTaaP OS has resynchronised the time.
 
-If problem persists or you would like to use alternative ntp servers please change the default.cfg file on the sd card.
+If problem persists or you would like to use alternative ntp servers please change the NTP 1 or/and NTP 2 setting, using Web or Serial configurator.
 As these servers may be blocked within your location.
 
 ```cpp
@@ -249,4 +251,8 @@ Core being the IoTaaP OS Library Version used and fw being the Firmware Version.
 ## Offline Publishes
 
 If a device cannot connect to the MQTT server, then publishes continue as normal but are added to a queue which is saved locally onto the SD card.
-As soon as the device re-establishes connection all publishes are sent to the MQTT in a first in first out manner.
+As soon as the device re-establishes connection all publishes are sent to the MQTT in a first in first out manner. 
+
+!!! warning "SD is mandatory"
+    Please note that in ourder to "backup" data locally, during network issue or similar, SD card has to be present, othervise
+    this feature will be disabled.

@@ -8,7 +8,7 @@ VSCode Folder Structure.
 
 This tutorial series breaks down this example and walks through the different MQTTS features of IoTaaP OS and how to use them.
 
-# Subscribing To Topics & Receiving MQTT Messages
+## Subscribing To Topics & Receiving MQTT Messages
 
 The simplest MQTT use case for IoTaaP OS is to connect to the wifi, subscribe to a MQTT topic and receive messages. 
 
@@ -17,26 +17,27 @@ The following example demonstrates this use case, in this tutorial we will break
 ```cpp
 #include <IoTaaP_OS.h>
 
-IoTaaP_OS iotaapOs(""1.0.1"");
+IoTaaP_OS iotaapOs("1.0.1");
 
 void callback(char *topic, byte *message, unsigned int length)
 {
-  Serial.println(""---------------------------"");
-  Serial.println(""Received data on topic:"");
+  Serial.println("---------------------------");
+  Serial.println("Received data on topic:");
   Serial.println(topic); // Print topic
 
-  Serial.println(""Data:"");
+  Serial.println("Data:");
 
   for (int i = 0; i < length; i++) // Print message
   {
     Serial.print((char)message[i]);
   }
   Serial.println();
-  Serial.println(""---------------------------"");
+  Serial.println("---------------------------");
 }
 
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   iotaapOs.checkForUpdates(); // Manually check for updates at startup
@@ -45,7 +46,7 @@ void setup()
 
 void loop()
 {
-
+  delay(500);
 }
 ```
 ## Including IoTaaP_OS <span id="IoTaaP_OS"></span>
@@ -87,6 +88,7 @@ Setup is the configuration section, which runs at the start of the system, handl
 ```cpp
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   iotaapOs.checkForUpdates(); // Manually check for updates at startup
@@ -114,15 +116,15 @@ void loop()
 ```
 
 ## Testing
-It is highly suggested to test this we apply the methodology found under [Iotaap-cloud-mqtt.](https://docs.iotaap.io/docs-tutorials/iotaap-cloud-mqtt/#testing-with-mqttfx) 
+It is highly suggested to test this we apply the methodology found under [IoTaaP Cloud - MQTTS](https://docs.iotaap.io/docs-tutorials/iotaap-cloud-mqtt/#testing-with-mqttfx).
 
-Send a Publish Message to the topic `/<username>/new_topic` using MQTT fx Client and check the serial monitor for an output.
+Send a Publish Message to the topic `/<username>/new_topic` using MQTT FX client and check the serial monitor for an output.
 
 The message should appear on screen similar to below.
 ![successful receive](images/Successful_receive.png)
 
 
-If this is not the case, please re-read to make sure you have not missed any steps. If you still cannot solve the issue please ask for help at our support forum [found here.](https://community.iotaap.io/c/support/6)
+If this is not the case, please re-read to make sure you have not missed any steps. If you still cannot solve the issue please ask for help at our support forum [found here](https://community.iotaap.io/c/support/6).
 
 
 ## Subscribing & Un-Subscribing
@@ -136,6 +138,7 @@ To achieve this we need to change the location of the subscription method from `
 ```cpp
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   iotaapOs.checkForUpdates(); // Manually check for updates at startup
@@ -153,6 +156,7 @@ This supports the ability now to also unsubscribe during runtime, allowing us to
 ```cpp
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   iotaapOs.checkForUpdates(); // Manually check for updates at startup
@@ -174,6 +178,7 @@ IoTaaP MQTT supports as many topics as the hardware can handle, they can be subs
 ```cpp
 void setup()
 {
+  iotaapOs.start(); // Start IoTaaP OS
   iotaapOs.startWifi(); // Connect to WiFi
   iotaapOs.startMqtt(callback); // Connect to MQTT broker
   iotaapOs.checkForUpdates(); // Manually check for updates at startup
