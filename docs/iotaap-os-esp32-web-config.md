@@ -5,7 +5,15 @@ without cables, serial port connections and similar.
 
 ## Entering IoTaaP OS Web Configurator
 
-During operation or boot, you have to press the predefined “Config button” on the board (routed to GPIO 25) - *please note that IoTaaP OS uses inverted logic, so 10k pull-up resistor to 3.3V is required, and configuration button is active low* By pressing "Config button" device will enter into Access Point (AP) mode and start the configurator. In the future, every device provided by us will come with a printed SSID and Password, but in order to find your device access data, you can get the SSID and Password of your device during boot through the serial port. During Web configurator operation, onboard LED will blink in a predefined pattern.
+During operation or boot, you have to press the predefined “Config button” on the board (routed to GPIO 25) - *please note that IoTaaP OS uses inverted logic, so 10k pull-up resistor to 3.3V is required, and configuration button is active low* 
+
+By pressing "Config button" device will enter into Access Point (AP) mode and start the configurator. 
+
+In the future, every device provided by us will come with a printed SSID and Password, but in order to find your device access data, you can get the SSID and Password of your device during boot (after pressing config button) through the serial port. 
+
+![alt text](https://files.iotaap.io/assets/iotaap-tutorials/remote-flash/web-configurator-credentials.PNG "Web configurator credentials")
+
+During Web configurator operation, onboard LED will blink in a predefined pattern.
 
 ![alt text](https://community.iotaap.io/uploads/default/original/1X/a9f746e3c0fdf96fcd19348929f8d6a9a4e15635.png "IoTaaP OS Access Point")
 
