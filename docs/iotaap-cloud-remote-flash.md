@@ -68,4 +68,8 @@ Please ensure that you enter the same version to the **Version** field in the co
 
 Also, after successfull update and restart, at each IoTaaP OS boot, you will be able to see the current firmware version, as well as IoTaaP OS version
 
-![alt text](https://files.iotaap.io/assets/iotaap-tutorials/remote-flash/serial_output.PNG "IoTaaP OS - Serial output")
+![alt text](https://files.iotaap.io/assets/iotaap-tutorials/remote-flash/web-configurator-credentials.PNG "IoTaaP OS - Serial output")
+
+!!! info "Notice"
+    Please note that you will not be able to flash single device if it's a part of the group, even if you remove it from the group in the console. Device
+    can be configured as a stand-alone device or as a part of the group. This configuration can be updated using [IoTaaP OS Web Configurator](iotaap-os-esp32-web-config.md).
